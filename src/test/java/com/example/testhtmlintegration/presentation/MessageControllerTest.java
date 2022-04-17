@@ -18,7 +18,7 @@ public class MessageControllerTest {
     MockMvc mockMvc;
 
     @Test
-    void testExample1() throws Exception {
+    void testFirstPostExample() throws Exception {
         
         MockHttpServletRequestBuilder createMessage = post("/messages/")
             .param("summary", "Spring Rocks")
@@ -27,5 +27,13 @@ public class MessageControllerTest {
         mockMvc.perform(createMessage)
             .andExpect(status().is3xxRedirection())
             .andExpect(redirectedUrl("/messages/123"));
+    }
+
+    @Test
+    void testSecondGetExample() throws Exception {
+
+        mockMvc.perform(get("/messages/form"))
+            .andExpect(xpath("//input[@name='summary']").exists())
+            .andExpect(xpath("//textarea[@name='text']").exists());
     }
 }
