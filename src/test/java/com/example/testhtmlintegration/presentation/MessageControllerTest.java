@@ -36,4 +36,22 @@ public class MessageControllerTest {
             .andExpect(xpath("//input[@name='summary']").exists())
             .andExpect(xpath("//textarea[@name='text']").exists());
     }
+
+    @Test
+    void testThird_mergeFirst_and_Second() throws Exception {
+
+        String summaryParamName = "summary";
+        String textParamName = "text";
+        mockMvc.perform(get("/messages/form"))
+            .andExpect(xpath("//input[@name='" + summaryParamName + "']").exists())
+            .andExpect(xpath("//textarea[@name='" + textParamName + "']").exists());
+        
+        MockHttpServletRequestBuilder createMessage = post("/messages/")
+            .param(summaryParamName, "Spring Rocks")
+            .param(textParamName, "In case you didn't know, Spring Rocks!");
+        
+        mockMvc.perform(createMessage)
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("/messages/123"));
+    }
 }
