@@ -1,6 +1,7 @@
 package com.example.testhtmlintegration.presentation;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MessageController {
     
     @GetMapping("form")
-    String get() {
+    String get(Model model) {
+        model.addAttribute("messageForm", new MessageForm());
         return "messages/form";
     }
 
