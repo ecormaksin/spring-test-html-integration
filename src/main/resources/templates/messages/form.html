@@ -9,6 +9,8 @@
     <h1>HtmlUnit Integration Example</h1>
     <form id="messageForm" action="/messages/" th:object="${messageForm}" method="post" th:action="@{/messages/}">
       <div><a href="/messages/">Messages</a></div>
+
+      <input type="hidden" th:field="*{id}" />
   
       <label for="summary">Summary</label>
       <input type="text" th:field="*{summary}" />
