@@ -34,17 +34,14 @@ public class MessageControllerMockMvcAndHtmlUnitTest {
         HtmlTextInput summaryInput = createMsgFormPage.getHtmlElementById("summary");
         summaryInput.setValueAttribute("Spring Rocks");
         HtmlTextArea textInput = createMsgFormPage.getHtmlElementById("text");
-        textInput.setText("In case didn't know, Spring Rocks!");
+        textInput.setText("In case you didn't know, Spring Rocks!");
         HtmlSubmitInput submit = form.getOneHtmlElementByAttribute("input", "type", "submit");
         HtmlPage newMessagePage = submit.click();
 
         assertThat(newMessagePage.getUrl().toString()).endsWith("/messages/123");
-        String id = newMessagePage.getHtmlElementById("id").getAttribute("value");
-        assertThat(id).isEqualTo("123");
         String summary = newMessagePage.getHtmlElementById("summary").getTextContent();
         assertThat(summary).isEqualTo("Spring Rocks");
         String text = newMessagePage.getHtmlElementById("text").getTextContent();
         assertThat(text).isEqualTo("In case you didn't know, Spring Rocks!");
     }
 }
-

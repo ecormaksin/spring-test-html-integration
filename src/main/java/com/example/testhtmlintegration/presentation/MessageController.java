@@ -42,6 +42,6 @@ public class MessageController {
                     @ModelAttribute(FORM_NAME) MessageForm messageForm) {
 
         model.addAttribute(FORM_NAME, messageForm);
-        return "messages/form";
+        return "messages/show";
     }
 }

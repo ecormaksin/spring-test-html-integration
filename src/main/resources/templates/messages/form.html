@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
 <head>
-  <title>HtmlUnit Integration Example</title>
+  <title>HtmlUnit Integration Example Form</title>
 </head>
 <body>
 <main>
   <article>
-    <h1>HtmlUnit Integration Example</h1>
+    <h1>HtmlUnit Integration Example Form</h1>
     <form id="messageForm" action="/messages/" th:object="${messageForm}" method="post" th:action="@{/messages/}">
       <div><a href="/messages/">Messages</a></div>
 
       <input type="hidden" th:field="*{id}" />
   
       <label for="summary">Summary</label>
-      <input type="text" th:field="*{summary}" />
+      <input id="summary" type="text" th:field="*{summary}" />
   
       <label for="text">Message</label>
       <textarea id="text" th:field="*{text}" ></textarea>
