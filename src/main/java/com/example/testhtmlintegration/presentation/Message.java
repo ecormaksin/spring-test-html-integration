@@ -3,7 +3,7 @@ package com.example.testhtmlintegration.presentation;
 import lombok.Data;
 
 @Data
-public class MessageForm {
+public class Message {
 
     String id;
     String summary;
