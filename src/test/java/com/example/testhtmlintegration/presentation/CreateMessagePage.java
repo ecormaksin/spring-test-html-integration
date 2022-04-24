@@ -4,12 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
-public class CreateMessagePage {
-
-    @Autowired
-    private WebDriver driver;
+public class CreateMessagePage extends AbstractPage {
 
     private WebElement id;
     private WebElement summary;
@@ -17,6 +13,10 @@ public class CreateMessagePage {
 
     @FindBy(css = "input[type=submit]")
     private WebElement submit;
+
+    public CreateMessagePage(WebDriver driver) {
+        super(driver);
+    }
 
     public <T> T createMessage(Class<T> resultPage, String id, String summary, String details) {
         this.id.sendKeys(id);

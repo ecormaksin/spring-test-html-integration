@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" >
 <head>
-  <title>HtmlUnit Integration Example Show</title>
+  <title>HtmlUnit Integration Example View</title>
 </head>
 <body>
 <main>
   <article>
-    <h1>HtmlUnit Integration Example Show</h1>
+    <h1>HtmlUnit Integration Example View</h1>
     <form id="messageForm" action="/messages/" th:object="${messageForm}" method="get" th:action="@{/messages/__${id}__}">
       <div><a href="/messages/">Messages</a></div>
 

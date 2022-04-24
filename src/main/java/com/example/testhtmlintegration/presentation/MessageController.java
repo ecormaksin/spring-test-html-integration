@@ -37,10 +37,10 @@ public class MessageController {
     }
 
     @GetMapping("{id}")
-    String edit(Model model, 
+    String view(Model model, 
                     @ModelAttribute(FORM_NAME) Message messageForm) {
 
         model.addAttribute(FORM_NAME, messageForm);
-        return "messages/show";
+        return "messages/view";
     }
 }

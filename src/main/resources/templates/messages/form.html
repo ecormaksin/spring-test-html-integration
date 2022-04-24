@@ -10,13 +10,13 @@
     <form id="messageForm" action="/messages/" th:object="${messageForm}" method="post" th:action="@{/messages/}">
       <div><a href="/messages/">Messages</a></div>
 
-      <input type="hidden" th:field="*{id}" />
+      <input type="hidden" id="id" name="id" th:field="*{id}" />
   
       <label for="summary">Summary</label>
-      <input id="summary" type="text" th:field="*{summary}" />
+      <input type="text" id="summary" name="summary" th:field="*{summary}" />
   
       <label for="text">Message</label>
-      <textarea id="text" th:field="*{text}" ></textarea>
+      <textarea id="text" name="text" th:field="*{text}"></textarea>
   
       <div>
         <input type="submit" value="Create" />
