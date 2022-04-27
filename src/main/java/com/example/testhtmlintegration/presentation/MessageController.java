@@ -32,8 +32,7 @@ public class MessageController {
 
         attributes.addFlashAttribute(FORM_NAME, messageForm);
 
-        URI uri = builder.path("/messages/"  + messageForm.getId()).build().toUri();
-        return "redirect:" + uri.toString();
+        return "redirect:/messages/" + messageForm.getId();
     }
 
     @GetMapping("{id}")

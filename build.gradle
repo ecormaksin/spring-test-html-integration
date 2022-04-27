@@ -23,6 +23,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'net.sourceforge.htmlunit:htmlunit'
 	testImplementation 'org.seleniumhq.selenium:htmlunit-driver'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.1.3'
 }
 
 tasks.named('test') {

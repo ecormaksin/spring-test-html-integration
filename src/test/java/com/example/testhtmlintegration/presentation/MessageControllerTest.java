@@ -21,6 +21,7 @@ public class MessageControllerTest {
     void testFirstPostExample() throws Exception {
         
         MockHttpServletRequestBuilder createMessage = post("/messages/")
+            .param("id", "123")
             .param("summary", "Spring Rocks")
             .param("text", "In case you didn't know, Spring Rocks!");
         
@@ -40,13 +41,16 @@ public class MessageControllerTest {
     @Test
     void testThird_mergeFirst_and_Second() throws Exception {
 
+        String idParamName = "id";
         String summaryParamName = "summary";
         String textParamName = "text";
         mockMvc.perform(get("/messages/form"))
+            .andExpect(xpath("//input[@name='" + idParamName + "']").exists())
             .andExpect(xpath("//input[@name='" + summaryParamName + "']").exists())
             .andExpect(xpath("//textarea[@name='" + textParamName + "']").exists());
         
         MockHttpServletRequestBuilder createMessage = post("/messages/")
+            .param(idParamName, "123")
             .param(summaryParamName, "Spring Rocks")
             .param(textParamName, "In case you didn't know, Spring Rocks!");
         

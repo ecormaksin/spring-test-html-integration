@@ -2,6 +2,7 @@ package com.example.testhtmlintegration.presentation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 @AutoConfigureMockMvc
 public class MessageControllerMockMvcAndWebDriverTest {
 
-    @Autowired
     WebDriver driver;
+
+    @BeforeEach
+    void setup() {
+        
+    }
 
     @Test
     void test() throws Exception {
 
-        CreateMessagePage page = new CreateMessagePage(driver);
-        // CreateMessagePage page = CreateMessagePage.to(driver);
+        // CreateMessagePage page = new CreateMessagePage(driver);
+        CreateMessagePage page = CreateMessagePage.to(driver);
 
         String expectedId = "123";
         String expectedSummary = "Spring Rocks";
