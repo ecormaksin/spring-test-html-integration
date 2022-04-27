@@ -18,8 +18,8 @@ public class MessageControllerMockMvcAndWebDriverTest {
     @Test
     void test() throws Exception {
 
-        driver.get("http://localhost/messagges/form");
         CreateMessagePage page = new CreateMessagePage(driver);
+        // CreateMessagePage page = CreateMessagePage.to(driver);
 
         String expectedId = "123";
         String expectedSummary = "Spring Rocks";
@@ -28,7 +28,7 @@ public class MessageControllerMockMvcAndWebDriverTest {
         Message expectedMessage = new Message(expectedId, expectedSummary, expectedText);
 
         ViewMessagePage viewMessagePage = 
-            page.post(expectedId, expectedSummary, expectedText);
+            page.createMessage(ViewMessagePage.class, expectedId, expectedSummary, expectedText);
         
         assertThat(viewMessagePage.getMessage()).isEqualTo(expectedMessage);
     }
