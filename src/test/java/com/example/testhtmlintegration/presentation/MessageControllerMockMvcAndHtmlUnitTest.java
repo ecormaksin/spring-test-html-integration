@@ -13,10 +13,12 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+// @SpringBootTest
+// @AutoConfigureMockMvc
+@WebMvcTest(MessageController.class)
 public class MessageControllerMockMvcAndHtmlUnitTest {
    
     @Autowired
@@ -26,7 +28,7 @@ public class MessageControllerMockMvcAndHtmlUnitTest {
     @Test
     void test() throws Exception {
 
-        HtmlPage createMsgFormPage = webClient.getPage("http://localhost/messages/form");
+        HtmlPage createMsgFormPage = webClient.getPage("/messages/form");
 
         HtmlForm form = createMsgFormPage.getHtmlElementById("messageForm");
         HtmlHiddenInput idInput = createMsgFormPage.getHtmlElementById("id");

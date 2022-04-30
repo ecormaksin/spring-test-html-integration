@@ -7,18 +7,20 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.context.WebServerApplicationContext;
+import org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder;
+import org.springframework.web.context.WebApplicationContext;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+// @SpringBootTest
+// @AutoConfigureMockMvc
+@WebMvcTest(MessageController.class)
 public class MessageControllerMockMvcAndWebDriverTest {
 
+    @Autowired
     WebDriver driver;
-
-    @BeforeEach
-    void setup() {
-        
-    }
 
     @Test
     void test() throws Exception {
