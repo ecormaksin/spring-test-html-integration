@@ -10,6 +10,8 @@
     <form id="messageForm" action="/messages/" th:object="${messageForm}" method="get" th:action="@{/messages/__${id}__}">
       <div><a href="/messages/">Messages</a></div>
 
+      <input type="hidden" id="id" name="id" th:field="*{id}" />
+
       <label for="summary">Summary</label>
       <p id="summary" th:text="*{summary}" />
   

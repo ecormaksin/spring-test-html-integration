@@ -28,7 +28,7 @@ public class ViewMessagePage extends AbstractPage {
     }
 
     private String getId() {
-        return this.id.getText();
+        return this.id.getAttribute("value");
     }
 
     private String getSummary() {

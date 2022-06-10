@@ -1,13 +1,15 @@
 package com.example.testhtmlintegration.presentation;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreateMessagePage extends AbstractPage {
 
-    private WebElement id;
     private WebElement summary;
     private WebElement text;
 
@@ -19,7 +21,8 @@ public class CreateMessagePage extends AbstractPage {
     }
 
     public <T> T createMessage(Class<T> resultPage, String id, String summary, String details) {
-        this.id.sendKeys(id);
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("document.getElementById('id').value = '" + id + "';");
         this.summary.sendKeys(summary);
         this.text.sendKeys(details);
         this.submit.click();
@@ -27,7 +30,8 @@ public class CreateMessagePage extends AbstractPage {
     }
 
     public static CreateMessagePage to(WebDriver driver) {
-        driver.get("http://localhost:9990/messagges/form");
+        driver.get("http://localhost:9990/messages/form");
+        new WebDriverWait(driver, 20).until(ExpectedConditions.titleIs("HtmlUnit Integration Example Form"));
         return PageFactory.initElements(driver, CreateMessagePage.class);
     }
 }

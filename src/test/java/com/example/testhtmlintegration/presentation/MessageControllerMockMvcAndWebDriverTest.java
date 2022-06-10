@@ -2,6 +2,7 @@ package com.example.testhtmlintegration.presentation;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +15,9 @@ import org.springframework.boot.web.context.WebServerApplicationContext;
 import org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder;
 import org.springframework.web.context.WebApplicationContext;
 
-// @SpringBootTest
-// @AutoConfigureMockMvc
-@WebMvcTest(MessageController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+//@WebMvcTest(MessageController.class)
 public class MessageControllerMockMvcAndWebDriverTest {
 
     @Autowired
@@ -25,7 +26,6 @@ public class MessageControllerMockMvcAndWebDriverTest {
     @Test
     void test() throws Exception {
 
-        // CreateMessagePage page = new CreateMessagePage(driver);
         CreateMessagePage page = CreateMessagePage.to(driver);
 
         String expectedId = "123";
@@ -38,5 +38,11 @@ public class MessageControllerMockMvcAndWebDriverTest {
             page.createMessage(ViewMessagePage.class, expectedId, expectedSummary, expectedText);
         
         assertThat(viewMessagePage.getMessage()).isEqualTo(expectedMessage);
+    }
+
+    @AfterEach
+    void destroy() {
+        if (driver == null) return;
+        driver.close();
     }
 }
